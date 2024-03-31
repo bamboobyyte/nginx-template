@@ -1,4 +1,4 @@
-upstream backend {
+upstream backend-name {
   server 127.0.0.1:8080;
 }
 
@@ -16,8 +16,11 @@ server {
     listen 443 ssl;
     server_name example.com;
 
+    # Basic auth
+    auth_basic "";
+    auth_basic_user_file /etc/apache2/.htpasswd;
+
     # SSL configuration added by Certbot
-    ssl                  on;
     ssl_certificate      /path/to/cert; 
     ssl_certificate_key  /path/to/key;
 
@@ -26,7 +29,7 @@ server {
 
     # Reverse proxy configuration
     location / {
-        proxy_pass backend;
+        proxy_pass http://backend-name;
         proxy_buffering off;
         proxy_http_version 1.1;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
