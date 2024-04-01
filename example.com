@@ -16,9 +16,13 @@ server {
     listen 443 ssl;
     server_name example.com;
 
+    # Auth
     # Basic auth
-    auth_basic "";
-    auth_basic_user_file /etc/apache2/.htpasswd;
+    # auth_basic "";
+    # auth_basic_user_file /etc/apache2/.htpasswd;
+    # Client cert auth
+    # ssl_client_certificate /path/to/root/cert;
+    # ssl_verify_client on;
 
     # SSL configuration added by Certbot
     ssl_certificate      /path/to/cert; 
