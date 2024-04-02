@@ -40,4 +40,18 @@ server {
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection $http_connection;
     }
+
+    # Custom error pages
+    # 40x errors
+    error_page 400 401 403 404 405 406 407 408 409 /40x.html;
+    location = /40x.html {
+        root /usr/share/nginx/error;
+        internal;
+    }
+    # 50x errors
+    error_page 500 501 502 503 504 505 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/error;
+        internal;
+    }
 }
