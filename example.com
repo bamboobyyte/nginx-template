@@ -2,7 +2,7 @@ upstream backend-name {
   server 127.0.0.1:8080;
 }
 
-# HTTP - redirect all requests to HTTPS
+# HTTP - configuration
 server {
     listen 80;
     server_name example.com;
@@ -28,6 +28,7 @@ server {
     ssl_certificate      /path/to/cert; 
     ssl_certificate_key  /path/to/key;
 
+    # Logs
     access_log   /var/log/nginx/example.com.access.log;
     error_log    /var/log/nginx/example.com.error.log;
 
